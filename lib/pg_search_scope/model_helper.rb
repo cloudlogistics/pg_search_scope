@@ -58,7 +58,7 @@ module PgSearchScope
         options = scope_options.merge(options || {})
         search_string ||= ''
 
-        terms = search_string.scan(/([\p{Lu}\p{Ll}\d][\p{Lu}\p{Ll}\d\.'@]*)/u).map {|s,_| s.gsub /'/, "''"}
+        terms = search_string.scan(/([\p{Lu}\p{Ll}\d][\p{Graph}]*)/u).map {|s,_| s.gsub /'/, "''"}
 
         search_scope = send(SCOPE_METHOD)
 
